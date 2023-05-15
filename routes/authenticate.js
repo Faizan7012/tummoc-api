@@ -47,13 +47,13 @@ passport.use(
         newUser.save();
         let { _id } = await UserModel.findOne({ email });
         const token = jwt.sign({ _id }, 'JWT_SECRET', {
-          expiresIn: "7d",
+          expiresIn: "12h",
         });
         profile.token = token;
         return cb(null, profile);
       }
       const token = jwt.sign({ _id: user._id }, 'JWT_SECRET', {
-        expiresIn: "7d",
+        expiresIn: "12h",
       });
       profile.token = token;
       return cb(null, profile);
