@@ -69,21 +69,14 @@ GoogleRouter.get(
 GoogleRouter.get(
   "/callback",
   passport.authenticate("google", {
-    failureRedirect: "/google/failure",
-    failureRedirect: "/goole/success",
+    failureRedirect: "/",
   }),
   function (req, res) {
     const r = req.user;
-    res.send({token : r.token , user : r._json , status : true , message : 'Login successfull'})
+    res.redirect(`http://localhost:3000`)
   }
 );
 
-GoogleRouter.get('/success' , async(req , res)=>{
-    res.redirect(`http://localhost:3000`)
-})
-GoogleRouter.get('/failure' , async(req , res)=>{
-    res.send('something went wrong')
-})
 
 
 
