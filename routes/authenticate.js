@@ -8,7 +8,7 @@ const passport = require("passport");
 const session = require("express-session");
 const UserModel = require("../model/user");
 
-GoogleRouter.use(cors({ origin: `http://localhost:8080`, credentials: true }));
+GoogleRouter.use(cors({ origin: `https://long-rose-hippo-fez.cyclic.app`, credentials: true }));
 
 GoogleRouter.use(
   session({
