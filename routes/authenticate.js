@@ -73,7 +73,7 @@ GoogleRouter.get(
   }),
   function (req, res) {
     const r = req.user;
-    res.redirect(`http://localhost:3000/home`)
+    res.redirect(`https://tummoc-blond.vercel.app/home`)
   }
 );
 
