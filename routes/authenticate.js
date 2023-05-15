@@ -32,9 +32,9 @@ passport.deserializeUser(function (user, done) {
 passport.use(
   new GoogleStrategy(
     {
-        clientID: '1029893891843-pgfeodi7olj27sfb36p4q8rf6aq85gds.apps.googleusercontent.com',
-        clientSecret: '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',
-        callbackURL: "/google/callback",
+        clientID: '629959510329-3lil8f8ni4sn96flnfh2g5kduvahhn64.apps.googleusercontent.com',
+        clientSecret: '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',
+        callbackURL: "https://long-rose-hippo-fez.cyclic.app/google/callback",
         passReqToCallback: true,
     },
     async function (request, accessToken, refreshToken, profile, cb) {
