@@ -1,19 +1,17 @@
 require("dotenv").config();
-var key = process.env.Key;
 const jwt = require("jsonwebtoken");
 const UserModel = require("../model/user");
 
 const userRegister = async (req, res) => {
   const { email  } = req.body;
-  const isPresent = await UserModel.findOne({ email: email });
-  if (isPresent) {
+  const isPresent = await UserModel.find({ email: email });
+  if (isPresent.length!==0) {
     res.json({ status: false, message: "User already registered!" });
   } else {
     try {
-            const newUser = new UserModel({
+            const newUser = await  UserModel.create({
               ...req.body,
             });
-            await newUser.save();
             res.json({
               status: true,
               message: "User successfully registered!",
@@ -28,16 +26,15 @@ const userRegister = async (req, res) => {
 const userSignin = async (req, res) => {
   const { email, password } = req.body;
   try {
-      const isExist = await UserModel.findOne({ email , password });
-     if (!isExist) {
+      const isExist = await UserModel.find({ email , password });
+     if (isExist.length == 0) {
         res.json({ status: false, message: "Wrong credential please try again !" });
            }
 
        else {
                 var token = jwt.sign(
                   {
-                    userId: isExist._id,
-                    email: isExist.email
+                    userId: isExist[0]._id,
                   },
                   'SECRET_KEY',
                   { expiresIn: "7d" }

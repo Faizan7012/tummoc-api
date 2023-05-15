@@ -37,22 +37,21 @@ passport.use(
     },
     async function (request, accessToken, refreshToken, profile, cb) {
       let { name, email } = profile._json;
-      const user = await UserModel.findOne({ email });
-      if (!user) {
-        const newUser = new UserModel({
+      const user = await UserModel.find({ email });
+      if (user.length ==0) {
+        const newUser = await UserModel.create({
           name,
           email,
           password: "1234",
         });
-        newUser.save();
-        let { _id } = await UserModel.findOne({ email });
-        const token = jwt.sign({ _id }, 'JWT_SECRET', {
+        let currUser = await UserModel.find({ email });
+        const token = jwt.sign({ userId : currUser[0]._id }, 'JWT_SECRET', {
           expiresIn: "12h",
         });
         profile.token = token;
         return cb(null, profile);
       }
-      const token = jwt.sign({ _id: user._id }, 'JWT_SECRET', {
+      const token = jwt.sign({ userId: user[0]._id }, 'JWT_SECRET', {
         expiresIn: "12h",
       });
       profile.token = token;
