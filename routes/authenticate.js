@@ -1,6 +1,5 @@
 require("dotenv").config();
 const express = require("express");
-const cors = require("cors");
 const GoogleRouter = express.Router();
 const jwt = require("jsonwebtoken");
 const GoogleStrategy = require("passport-google-oauth2").Strategy;
@@ -31,8 +30,8 @@ passport.deserializeUser(function (user, done) {
 passport.use(
   new GoogleStrategy(
     {
-        clientID: '629959510329-3lil8f8ni4sn96flnfh2g5kduvahhn64.apps.googleusercontent.com',
-        clientSecret: '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',
+        clientID: '192025642468-v7pb0s526dmc2229r5n7bmvjrkr5kqa6.apps.googleusercontent.com',
+        clientSecret: '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',
         callbackURL: "/google/callback",
         passReqToCallback: true,
     },
