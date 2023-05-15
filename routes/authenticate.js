@@ -73,7 +73,7 @@ GoogleRouter.get(
   }),
   function (req, res) {
     const r = req.user;
-    res.redirect(`https://tummoc-blond.vercel.app/home`)
+    res.redirect(`https://frontend-eight-phi-39.vercel.app/home`)
   }
 );
 
