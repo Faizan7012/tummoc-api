@@ -1,7 +1,7 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const GoogleRouter = express.GoogleRouter();
+const GoogleRouter = express.Router();
 const jwt = require("jsonwebtoken");
 const GoogleStrategy = require("passport-google-oauth2").Strategy;
 const passport = require("passport");
