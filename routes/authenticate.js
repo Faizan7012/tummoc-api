@@ -32,7 +32,7 @@ passport.use(
     {
         clientID: '192025642468-v7pb0s526dmc2229r5n7bmvjrkr5kqa6.apps.googleusercontent.com',
         clientSecret: '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',
-        callbackURL: "/google/callback",
+        callbackURL: "https://long-rose-hippo-fez.cyclic.app/google/callback",
         passReqToCallback: true,
     },
     async function (request, accessToken, refreshToken, profile, cb) {
