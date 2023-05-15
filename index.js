@@ -6,9 +6,6 @@ var app = express();
 
 app.use(express.json());
 
-
-app.use(passport.initialize());
-
 app.use('/google' ,  GoogleRouter)
 app.use('/user' , userRoute)
 
